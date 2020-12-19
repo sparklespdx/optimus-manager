@@ -74,6 +74,10 @@ def do_xsetup(requested_mode):
 
     logger = get_logger()
 
+    # TEST
+    logger.info("TEST: aborting xsetup")
+    return
+
     if requested_mode == "nvidia":
 
         logger.info("Running xrandr commands")
