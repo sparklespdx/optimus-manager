@@ -166,6 +166,10 @@ def _generate_nvidia(config, bus_ids, xorg_extra):
     if config["nvidia"]["allow_external_gpus"] == "yes":
         text += "\tOption \"AllowExternalGpus\"\n"
 
+    text += "\tOption \"AllowIndirectGLXProtocol\" \"off\""
+    text += "\tOption \"TripleBuffer\" \"on\""
+    text += "\tOption \"metamodes\" \"nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}\""
+
     text += "EndSection\n\n"
 
     text += "Section \"Device\"\n" \
@@ -280,8 +284,8 @@ def _make_nvidia_device_section(config, bus_ids, xorg_extra):
     text += "\tBusID \"%s\"\n" % bus_ids["nvidia"]
     if "overclocking" in options:
         text += "\tOption \"Coolbits\" \"28\"\n"
-    if "triple_buffer" in options:
-        text += "\tOption \"TripleBuffer\" \"true\"\n"
+    #if "triple_buffer" in options:
+    #    text += "\tOption \"TripleBuffer\" \"true\"\n"
     if "nvidia" in xorg_extra.keys():
         for line in xorg_extra["nvidia"]:
             text += ("\t" + line + "\n")
