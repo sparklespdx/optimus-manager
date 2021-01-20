@@ -166,9 +166,9 @@ def _generate_nvidia(config, bus_ids, xorg_extra):
     if config["nvidia"]["allow_external_gpus"] == "yes":
         text += "\tOption \"AllowExternalGpus\"\n"
 
-    text += "\tOption \"AllowIndirectGLXProtocol\" \"off\""
-    text += "\tOption \"TripleBuffer\" \"on\""
-    text += "\tOption \"metamodes\" \"nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}\""
+    text += "\tOption \"AllowIndirectGLXProtocol\" \"off\"\n"
+    text += "\tOption \"TripleBuffer\" \"on\"\n"
+    text += "\tOption \"metamodes\" \"nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}\"\n"
 
     text += "EndSection\n\n"
 
